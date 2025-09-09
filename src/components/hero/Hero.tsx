@@ -26,10 +26,14 @@ const HeroCard = ({
         className,
       )}
     >
-      <div className="max-md:text-center">
+      <div className="flex flex-col max-md:items-center">
         {/* <h1 className="text-h1">{percentage}%</h1> */}
         <div className="flex items-center">
-          <Odometer min={0} max={percentage} className="-space-x-2" />
+          <Odometer
+            min={0}
+            max={percentage}
+            className="-space-x-1 md:-space-x-2"
+          />
           <span className="text-h1">%</span>
         </div>
         <p>{title}</p>
@@ -93,12 +97,12 @@ const Hero = () => {
             {/* Users */}
             <div className="text-secondary-light-green bg-secondary-green rounded-2xl px-10 py-5 text-center max-md:px-16 max-md:py-6">
               {/* <p className="text-h1">30 000 +</p> */}
-              <div className="flex items-center">
+              <div className="flex items-center gap-2.5">
                 <Odometer
                   space={2}
                   min={10000}
                   max={30000}
-                  className="-space-x-[5px]"
+                  className="-space-x-0.5"
                 />
                 <span className="text-h1">+</span>
               </div>

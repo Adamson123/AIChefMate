@@ -92,18 +92,19 @@ const Odometer = ({
     }
 
     const remainder = (count.length - 1) % 3;
-    let acc = "";
+
+    const nums: string[] = [];
 
     count.split("").forEach((num, i) => {
-      acc += num;
+      nums.push(num);
       if (i === remainder || (i - remainder) % 3 === 0) {
-        acc += " ";
+        nums.push(" ");
       }
     });
 
-    //console.log(acc.split(""));
+    if (nums[nums.length - 1] === " ") nums.pop();
 
-    return acc.split("");
+    return nums;
   };
 
   return (
