@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Syne:wght@400..800&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  --max-section-width: 1500px;
+}
+
+@theme {
+  --color-primary: #f1f2ed;
+  --color-secondary-green: #213d34;
+  --color-secondary-light-green: #d9ef78;
+  --font-syne: "Syne", ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility common-max-width {
+  @apply max-w-[var(--max-section-width)];
+}
+
+@utility text-h1 {
+  @apply text-[34px] md:text-[40px] lg:text-[50px] xl:text-[55px];
+}
+
+@utility text-h2 {
+  @apply text-2xl md:text-[35px] lg:text-[40px] xl:text-[45px];
+}
+@utility text-h3 {
+  @apply text-[25px] md:text-[30px] xl:text-[35px];
+}
+@utility text-h4 {
+  @apply text-[19px] md:text-[24px] xl:text-[29px];
+}
+@utility text-p {
+  @apply text-[16px] md:text-[17px] xl:text-[19px];
+}
+
+@utility common-x-padding {
+  @apply px-4 md:px-[2rem];
+}
+
+@utility common-l-padding {
+  @apply pl-4 md:pl-[2rem];
+}
+
+@utility common-r-padding {
+  @apply pr-4 md:pr-[2rem];
+}
+
+button {
+  cursor: pointer;
+}
+
+.greenliquidAnimationButton {
+  background-image: url(/assets/wave-x-2.png);
+}
+.lightGreenliquidAnimationButton {
+  background-image: url(/assets/l-wave-x-2.png);
+}
+.lightGreenliquidAnimationButton:hover {
+  @apply text-secondary-green;
+}
+.greenliquidAnimationButton:hover {
+  @apply text-secondary-light-green;
+}
+
+.greenliquidAnimationButton,
+.lightGreenliquidAnimationButton {
+  background-repeat: repeat-x;
+  background-position: 0 -200%;
+  transition:
+    background 1.5s ease,
+    color 1.5s ease;
+  background-size: auto 100px;
+  /* height: 500px;
+  width: 500px; */
+}
+
+.greenliquidAnimationButton:hover,
+.lightGreenliquidAnimationButton:hover {
+  background-position: 500% 100%;
+}
+
+/* .liquidAnimationButton {
+  
+  background-image: url(/assets/green-wave.png);
+  background-repeat: repeat-y; 
+  background-position: -100% 0; 
+  transition: 1.5s ease; 
+  background-size: 300px auto;
+   height: 500px;
+  width: 500px; 
+} */
+
+/* .liquidAnimationButton:hover {
+  background-position: 110% 500%;
+} */
