@@ -6,27 +6,41 @@ const NumCols = ({
   rowIndex,
   colIndex,
   className,
+  finished,
+  count,
 }: {
   rowIndex: number;
   colIndex: number;
   className?: string;
+  finished: boolean;
+  count: string;
 }) => {
   const colRef = useRef<HTMLDivElement>(null);
   const rowIndexToString = rowIndex.toString();
 
   useEffect(() => {
-    if (colRef.current) {
-      const element = colRef.current as HTMLDivElement;
-      //  console.log(element, `#${rowIndexToString + colIndex}`);
-      const target = element.querySelector(
-        `#${"id_" + rowIndexToString + colIndex + ""}`,
-      ) as HTMLElement;
+    const updateColPosition = () => {
+      if (colRef.current) {
+        const element = colRef.current as HTMLDivElement;
+        //  console.log(element, `#${rowIndexToString + colIndex}`);
+        const target = element.querySelector(
+          `#${"id_" + rowIndexToString + colIndex + ""}`,
+        ) as HTMLElement;
 
-      element.style.transform = `translateY(-${target?.offsetTop}px)`;
-      element.style.transition =
-        "transform 0.2s cubic-bezier(0.22, 1, 0.36, 1)";
-    }
-  });
+        element.style.transform = `translateY(-${target?.offsetTop}px)`;
+        element.style.transition =
+          "transform 0.2s cubic-bezier(0.22, 1, 0.36, 1)";
+      }
+    };
+
+    updateColPosition();
+
+    if (!finished) return;
+
+    window.addEventListener("resize", updateColPosition);
+
+    return () => window.removeEventListener("resize", updateColPosition);
+  }, [finished, colIndex, rowIndexToString, count]);
 
   return (
     <div
@@ -70,11 +84,16 @@ const Odometer = ({
   space?: number;
 }) => {
   const [count, setCount] = useState(min.toString());
+  const [finished, setFinished] = useState(false);
   const odometerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(odometerRef);
 
   useEffect(() => {
-    if (Number(count) >= max || !isInView) return;
+    if (!isInView) return;
+    if (Number(count) >= max) {
+      setFinished(true);
+      return;
+    }
     const updateCount = () => {
       let countToNum = Number(count);
       countToNum++;
@@ -121,6 +140,8 @@ const Odometer = ({
             rowIndex={i}
             colIndex={Number(num)}
             className={numColsClassName}
+            finished={finished}
+            count={count}
           />
         ),
       )}

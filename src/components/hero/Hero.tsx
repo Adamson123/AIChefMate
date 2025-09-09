@@ -6,6 +6,8 @@ import markus from "/assets/hero/markus.jpg";
 import spag from "/assets/hero/spag.jpg";
 import bag from "/assets/hero/bag.jpg";
 import plant from "/assets/hero/plant.jpg";
+import type { HTMLAttributes } from "react";
+import NotchedSection from "../ui/NotchedSection";
 
 //h-[330px] xl:h-[370px]
 const HeroCard = ({
@@ -22,7 +24,7 @@ const HeroCard = ({
   return (
     <div
       className={cn(
-        "flex h-82 max-w-70 flex-col gap-5 rounded-2xl bg-white p-3 xl:h-97",
+        "flex h-82 max-w-70 flex-col gap-5 rounded-2xl bg-white p-3 xl:h-92",
         className,
       )}
     >
@@ -51,7 +53,7 @@ const HeroCard = ({
 
 const Hero = () => {
   return (
-    <section className="bg-primary pb-[70px]">
+    <NotchedSection notchPos="right" className="pb-[70px]">
       <div className="common-max-width common-x-padding relative mx-auto flex flex-col items-center gap-12 pt-[100px]">
         {/* Icons */}
         {/* Head */}
@@ -65,7 +67,7 @@ const Hero = () => {
           </p>
         </div>
         {/*  */}
-        <div className="flex h-77 gap-5 md:h-82 xl:h-97">
+        <div className="flex h-77 gap-5 md:h-82 xl:h-92">
           {/* Left */}
           <div className="grid gap-5 max-md:hidden xl:grid-cols-2">
             <HeroCard
@@ -75,7 +77,7 @@ const Hero = () => {
               className="pt-2 xl:-translate-y-15"
             />
             <img
-              className="h-82 rounded-2xl object-cover max-xl:hidden xl:h-97"
+              className="h-82 rounded-2xl object-cover max-xl:hidden xl:h-92"
               src={spag}
               alt="Markus image"
             />
@@ -119,7 +121,7 @@ const Hero = () => {
               className="flex-col-reverse pb-5"
             />
             <img
-              className="h-82 -translate-y-15 rounded-2xl object-cover max-xl:hidden xl:h-97"
+              className="h-82 -translate-y-15 rounded-2xl object-cover max-xl:hidden xl:h-92"
               src={plant}
               alt="Vegetable plant image"
             />
@@ -140,7 +142,7 @@ const Hero = () => {
           />
         </div>
       </div>
-    </section>
+    </NotchedSection>
   );
 };
 
