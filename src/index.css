@@ -22,7 +22,7 @@
 }
 
 @utility text-h2 {
-  @apply text-2xl md:text-[35px] lg:text-[40px] xl:text-[45px];
+  @apply text-[30px] md:text-[38px] lg:text-[43px] xl:text-[47px];
 }
 @utility text-h3 {
   @apply text-[25px] md:text-[30px] xl:text-[35px];
@@ -36,6 +36,22 @@
 
 @utility common-x-padding {
   @apply px-4 md:px-[2rem];
+}
+
+@utility common-padding {
+  @apply p-4 md:p-[2rem];
+}
+
+@utility common-y-padding {
+  @apply py-4 md:py-[2rem];
+}
+
+@utility common-x-gap {
+  @apply gap-x-4 md:gap-x-[2rem];
+}
+
+@utility common-y-gap {
+  @apply gap-y-4 md:gap-y-[2rem];
 }
 
 @utility common-l-padding {

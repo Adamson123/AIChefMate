@@ -53,7 +53,7 @@ const HeroCard = ({
 
 const Hero = () => {
   return (
-    <NotchedSection notchPos="right" className="pb-[70px]">
+    <NotchedSection className="pb-[70px]">
       <div className="common-max-width common-x-padding relative mx-auto flex flex-col items-center gap-12 pt-[100px]">
         {/* Icons */}
         {/* Head */}
