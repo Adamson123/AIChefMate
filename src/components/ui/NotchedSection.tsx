@@ -61,7 +61,7 @@ const NotchedSection = (
   } = props;
 
   return (
-    <section className={cn("pb-12", sectionClassName)} {...others}>
+    <section className={cn("pb-12 md:pb-18", sectionClassName)} {...others}>
       <div className={cn("bg-primary relative", className)}>
         {children}
         <Notch notchPos={notchPos} />
