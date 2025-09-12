@@ -5,15 +5,17 @@ const SectionHeader = ({
   title,
   description,
   bgClassName,
+  titleClassName,
 }: {
   title: string;
   description: string;
   bgClassName?: string;
+  titleClassName?: string;
 }) => {
   return (
     <div className="relative mb-18 flex items-center gap-10 max-lg:mb-10 max-md:gap-6">
       <div className="relative z-10 flex items-center self-stretch pr-10 max-md:pr-6">
-        <h2 className="text-h2">{title}</h2>
+        <h2 className={cn("text-h2 leading-h2", titleClassName)}>{title}</h2>
         <div
           className={cn(
             "absolute -inset-y-3 -right-4 -left-100 -z-1 bg-white",

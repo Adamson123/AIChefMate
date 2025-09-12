@@ -1,8 +1,12 @@
 import type { HTMLAttributes } from "react";
 import { cn } from "../../lib/cn";
 
-const Notch = ({ notchPos }: { notchPos: "br" | "bl" | "tr" | "tl" }) => {
-  const globalClasses = "h-16 w-[30%] min-w-[300px] -z-1 absolute bg-primary";
+const Notch = ({
+  notchPos,
+}: {
+  notchPos: "br" | "bl" | "bc" | "tr" | "tl" | "tc";
+}) => {
+  const globalClasses = "h-16 w-[40%] min-w-[300px] -z-1 absolute bg-primary";
 
   switch (notchPos) {
     case "br":
@@ -23,6 +27,16 @@ const Notch = ({ notchPos }: { notchPos: "br" | "bl" | "tr" | "tl" }) => {
           )}
         />
       );
+    case "bc":
+      return (
+        <div
+          className={cn(
+            globalClasses,
+            "-bottom-12 left-1/2 -translate-x-1/2 rounded-b-[50px] max-md:-bottom-9",
+          )}
+        />
+      );
+
     case "tr":
       return (
         <div
@@ -41,6 +55,15 @@ const Notch = ({ notchPos }: { notchPos: "br" | "bl" | "tr" | "tl" }) => {
           )}
         />
       );
+    case "tc":
+      return (
+        <div
+          className={cn(
+            globalClasses,
+            "-top-12 left-1/2 -translate-x-1/2 rounded-t-[50px] max-md:-bottom-9",
+          )}
+        />
+      );
     default:
       return null;
   }
@@ -48,7 +71,7 @@ const Notch = ({ notchPos }: { notchPos: "br" | "bl" | "tr" | "tl" }) => {
 
 const NotchedSection = (
   props: HTMLAttributes<HTMLElement> & {
-    notchPos?: "br" | "bl" | "tr" | "tl";
+    notchPos?: "br" | "bl" | "bc" | "tr" | "tl" | "tc";
     sectionClassName?: string;
   },
 ) => {
