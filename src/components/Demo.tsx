@@ -18,7 +18,7 @@ const Demo = () => {
 
   return (
     <section ref={containerRef} className="common-l-padding relative h-[400vh]">
-      <div className="sticky top-0 pt-12 pb-25">
+      <div className="sticky top-0 bg-white pt-12 pb-25">
         <div className="common-max-width mx-auto">
           <SectionHeader
             title="Demo"

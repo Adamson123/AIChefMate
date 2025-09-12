@@ -11,7 +11,7 @@ const images = [third, second, first];
 
 const HowItWorksElements = () => {
   return (
-    <div className="common-max-width common-x-padding mx-auto overflow-hidden max-md:pb-17">
+    <div className="common-max-width common-x-padding mx-auto max-md:pb-17">
       <SectionHeader
         title="How it works"
         description="Step into the world of hassle-free meal planning with our easy 3-step process"
@@ -39,13 +39,18 @@ const HowItWorksElements = () => {
               <img src={arrow} alt="Arrow" />
             </Button>
           </div>
-          <h3 className="text-h3 translate-y-28 max-lg:hidden">01/03</h3>
+          <h3 className="text-h3 translate-y-17 max-xl:translate-y-10 max-lg:hidden">
+            01/03
+          </h3>
         </div>
         {/* Right */}
+        {/* This will affect the section container's height */}
         <div
           className={cn(
-            "relative h-[550px] lg:w-[40%]",
-            "max-md:h-[400px]",
+            "relative lg:w-[40%]",
+            "h-[500px]",
+            "lg:max-xl:h-[430px]",
+            "max-[593px]:h-[400px]",
             "lg:max-xl:-translate-x-16",
           )}
         >
@@ -54,17 +59,23 @@ const HowItWorksElements = () => {
               key={i}
               src={image}
               style={{
-                rotate: `${i * 7}deg`,
-                transform: `translateX(${i * 80}px)`,
+                ["--tx" as any]: `${i * 80}px`,
+                ["--sm-tx" as any]: `${i * 30}px`,
+                ["--rot" as any]: `${i * 7}deg`,
+                //  transform: `translateX(${i * 80}px)`,
               }}
               className={cn(
-                "absolute rounded-[50px] object-cover max-lg:left-1/2 max-lg:-translate-x-[60%]",
+                "absolute rounded-[50px] object-cover",
+                "rotate-[var(--rot)]",
                 i === 0 && "scale-y-[0.8]",
-                i === images.length - 1 && "-translate-y-10",
-                "h-[420px] w-[330px]",
-                //  "max-w-[330px] max-lg:aspect-[1/2] max-lg:w-[60%]",
-                "max-md:h-[330px] max-md:max-w-[230px] max-md:-translate-x-[90%]",
-                "lg:max-xl:h-[370px] lg:max-xl:w-[260px]",
+                //    i === images.length - 1 && "-translate-y-10",
+                /* Default size */ "h-[420px] w-[330px]",
+                /* Small devices size and position  */ "max-[593px]:h-[330px] max-[593px]:max-w-[230px]",
+                /* Lg devices */ "lg:max-xl:h-[370px] lg:max-xl:w-[260px]",
+                /* Default Pos */ "translate-x-[var(--tx)]",
+                "max-lg:translate-y-9",
+                "max-lg:left-[45%] max-lg:-translate-x-[calc(50%-var(--tx))]",
+                "max-md:-translate-x-[calc(50%-var(--sm-tx))]",
               )}
             />
           ))}
