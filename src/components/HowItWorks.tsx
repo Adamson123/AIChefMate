@@ -4,9 +4,9 @@ import Button from "./ui/Button";
 import NotchedSection from "./ui/NotchedSection";
 import SectionHeader from "./ui/SectionHeader";
 import arrow from "/assets/howitworks/arrow.svg";
-import front from "/assets/howitworks/first.jpg";
-import middle from "/assets/howitworks/second.jpg";
-import back from "/assets/howitworks/third.jpg";
+import front from "/assets/howitworks/front.jpg";
+import middle from "/assets/howitworks/middle.jpg";
+import back from "/assets/howitworks/back.jpg";
 
 //const images = [third, second, first];
 
@@ -47,7 +47,15 @@ const HowItWorksElements = () => {
     if (!secondClass) secondClass = second.className;
 
     first.className = secondClass;
-    first.style.zIndex = second.style.zIndex;
+    // first.style.zIndex = second.style.zIndex;
+  };
+
+  const delay = async () => {
+    await new Promise((res, rej) => {
+      setTimeout(() => {
+        res("");
+      }, 300);
+    });
   };
 
   const next = async () => {
@@ -55,29 +63,19 @@ const HowItWorksElements = () => {
 
     setIsSliding(true);
 
-    const images = imagesRef.current as HTMLImageElement[];
-    const [back, middle, front] = images;
+    const imagesElement = imagesRef.current as HTMLImageElement[];
+    const [back, middle, front] = imagesElement;
 
-    if (current === 0) {
-      setCurrent(2);
-    } else {
-      setCurrent((prev) => prev - 1);
-    }
+    const frontImage = imagesElement[2];
+    const frontImageVarObj = getVars(frontImage);
 
-    const slidingImage = images[current];
-    const slidingImageVarObj = getVars(slidingImage);
+    frontImage.style.setProperty("--rot", "45deg");
+    frontImage.style.setProperty("--tx", "200%");
+    frontImage.style.setProperty("--sm-tx", "200%");
 
-    slidingImage.style.setProperty("--rot", "45deg"); //rotate = "45deg";
-    slidingImage.style.setProperty("--tx", "200%"); //transform = "translate(200%,20%)";
-    slidingImage.style.setProperty("--sm-tx", "200%");
+    await delay();
 
-    await new Promise((res, rej) => {
-      setTimeout(() => {
-        res("");
-      }, 300);
-    });
-
-    assignStyles(slidingImage, slidingImage, { varsObj: slidingImageVarObj });
+    assignStyles(frontImage, frontImage, { varsObj: frontImageVarObj });
 
     const backVarsObj = getVars(back);
     const backClassNames = back.className;
@@ -87,6 +85,16 @@ const HowItWorksElements = () => {
     assignStyles(front, back, {
       varsObj: backVarsObj,
       secondClass: backClassNames,
+    });
+
+    await delay();
+
+    setImages((prev) => {
+      const backIndex = 0;
+      const middleIndex = 1;
+      const frontIndex = 2;
+
+      return [prev[frontIndex], prev[backIndex], prev[middleIndex]];
     });
 
     setIsSliding(false);
@@ -165,9 +173,9 @@ const HowItWorksElements = () => {
               <img src={arrow} alt="Arrow" />
             </Button>
           </div>
-          {/* <h3 className="text-h3 translate-y-[30%] max-xl:translate-y-10 max-lg:hidden">
+          <h3 className="text-h3 translate-y-[30%] max-xl:translate-y-10 max-lg:hidden">
             01/03
-          </h3> */}
+          </h3>
         </div>
         {/* Right */}
         {/* This will affect the section container's height */}
@@ -182,7 +190,7 @@ const HowItWorksElements = () => {
         >
           {images.map((image, i) => (
             <img
-              key={i}
+              key={image}
               ref={(el) => {
                 imagesRef.current[i] = el;
               }}
