@@ -8,6 +8,7 @@ import front from "/assets/howitworks/front.jpg";
 import middle from "/assets/howitworks/middle.jpg";
 import back from "/assets/howitworks/back.jpg";
 import { delay } from "../utils";
+import ArrowSvg from "./ui/ArrowSvg";
 
 const features = [
   {
@@ -160,12 +161,16 @@ const HowItWorksElements = () => {
             <Button
               onClick={prev}
               colorType="transparent"
-              className="py-4 md:py-4 xl:py-4"
+              className="hover:[&_path]:fill-secondary-light-green py-4 md:py-4 xl:py-4"
             >
-              <img src={arrow} alt="Arrow" className="rotate-180" />
+              <ArrowSvg className="rotate-180" />
             </Button>
-            <Button onClick={next} colorType="light" className="border-2">
-              <img src={arrow} alt="Arrow" />
+            <Button
+              onClick={next}
+              colorType="light"
+              className="hover:[&_path]:fill-secondary-light-green border-2"
+            >
+              <ArrowSvg />
             </Button>
           </div>
           <h3 className="text-h3 translate-y-[30%] max-xl:translate-y-5 max-lg:hidden">
