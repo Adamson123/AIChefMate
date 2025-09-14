@@ -7,7 +7,9 @@ import play from "/assets/demo/play.svg";
 
 const Demo = () => {
   const everyMeal =
-    "Every meal is a chance to nourish your body, inspire your mind, and feed your soul.";
+    "Every meal is a chance to nourish your body, inspire your mind, and feed your soul.".split(
+      " ",
+    );
 
   const containerRef = useRef(null);
 
@@ -54,7 +56,7 @@ const Demo = () => {
               </div>
               {/* Text */}
               <div className="text-h2 leading-h2 text-center md:text-right [&>span]:transition-all [&>span]:duration-300">
-                {everyMeal.split("").map((char, i) => {
+                {everyMeal.map((char, i) => {
                   const isRaised = scrollProgress * everyMeal.length <= i;
                   return (
                     <span
@@ -66,7 +68,8 @@ const Demo = () => {
                         "inline-block transition-transform duration-300",
                       )}
                     >
-                      {char === " " ? <>&nbsp;</> : char}
+                      {/* {char === " " ? <>&nbsp;</> : char} */}
+                      {char}&nbsp;
                     </span>
                   );
                 })}

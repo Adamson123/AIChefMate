@@ -7,6 +7,7 @@ import arrow from "/assets/howitworks/arrow.svg";
 import front from "/assets/howitworks/front.jpg";
 import middle from "/assets/howitworks/middle.jpg";
 import back from "/assets/howitworks/back.jpg";
+import { delay } from "../utils";
 
 //const images = [third, second, first];
 
@@ -17,6 +18,7 @@ const HowItWorksElements = () => {
   const [isSliding, setIsSliding] = useState(false);
 
   const vars = ["--tx", "--sm-tx", "--rot", "--zi"];
+
   const getVars = (image: HTMLImageElement) => {
     const varsObj = {} as any;
     vars.forEach((v) => {
@@ -47,26 +49,19 @@ const HowItWorksElements = () => {
     if (!secondClass) secondClass = second.className;
 
     first.className = secondClass;
-    // first.style.zIndex = second.style.zIndex;
   };
 
-  const delay = async () => {
-    await new Promise((res, rej) => {
-      setTimeout(() => {
-        res("");
-      }, 300);
-    });
-  };
-
-  const next = async () => {
+  const move = async (
+    imageElements: HTMLImageElement[],
+    callback: () => void,
+  ) => {
     if (isSliding) return;
 
     setIsSliding(true);
 
-    const imagesElement = imagesRef.current as HTMLImageElement[];
-    const [back, middle, front] = imagesElement;
+    const [back, middle, front] = imageElements;
 
-    const frontImage = imagesElement[2];
+    const frontImage = imageElements[2];
     const frontImageVarObj = getVars(frontImage);
 
     frontImage.style.setProperty("--rot", "45deg");
@@ -89,55 +84,34 @@ const HowItWorksElements = () => {
 
     await delay();
 
-    setImages((prev) => {
-      const backIndex = 0;
-      const middleIndex = 1;
-      const frontIndex = 2;
-
-      return [prev[frontIndex], prev[backIndex], prev[middleIndex]];
-    });
+    callback();
 
     setIsSliding(false);
   };
 
-  const prev = () => {
-    // const images = imagesRef.current as HTMLImageElement[];
-    // const [back, middle, front] = images;
-    // const frontVarsObj = getVars(front);
-    // const frontClassNames = front.className;
-    // // param1 =  param2
-    // assignStyles(front, middle);
-    // assignStyles(middle, back);
-    // assignStyles(back, front, {
-    //   varsObj: frontVarsObj,
-    //   secondClass: frontClassNames,
-    // });
-    //SECOND\\
-    // const images = imagesRef.current as HTMLImageElement[];
-    // const [back, middle, front] = images.reverse();
-    // if (current === 2) {
-    //   setCurrent(0);
-    // } else {
-    //   setCurrent((prev) => prev + 1);
-    // }
-    // const slidingImage = images[current];
-    // const slidingImageVarObj = getVars(slidingImage);
-    // slidingImage.style.setProperty("--rot", "45deg"); //rotate = "45deg";
-    // slidingImage.style.setProperty("--tx", "200%"); //transform = "translate(200%,20%)";
-    // slidingImage.style.setProperty("--sm-tx", "200%");
-    // const ontransitionend = () => {
-    //   slidingImage.removeEventListener("transitionend", ontransitionend);
-    //   assignStyles(slidingImage, slidingImage, { varsObj: slidingImageVarObj });
-    //   const backVarsObj = getVars(back);
-    //   const backClassNames = back.className;
-    //   assignStyles(back, middle);
-    //   assignStyles(middle, front);
-    //   assignStyles(front, back, {
-    //     varsObj: backVarsObj,
-    //     secondClass: backClassNames,
-    //   });
-    // };
-    // slidingImage.addEventListener("transitionend", ontransitionend);
+  const next = async () => {
+    const imageElements = imagesRef.current as HTMLImageElement[];
+    move(imageElements, () => {
+      setImages((prev) => {
+        const backIndex = 0;
+        const middleIndex = 1;
+        const frontIndex = 2;
+
+        return [prev[frontIndex], prev[backIndex], prev[middleIndex]];
+      });
+    });
+  };
+
+  const prev = async () => {
+    const imageElements = (imagesRef.current as HTMLImageElement[]).reverse();
+    move(imageElements, () => {
+      setImages((prev) => {
+        const backIndex = 0;
+        const middleIndex = 1;
+        const frontIndex = 2;
+        return [prev[middleIndex], prev[frontIndex], prev[backIndex]];
+      });
+    });
   };
 
   return (
@@ -200,10 +174,9 @@ const HowItWorksElements = () => {
                 ["--sm-tx" as any]: `${i * 30}px`,
                 ["--rot" as any]: `${i * 7}deg`,
                 ["--zi" as any]: i,
-                //  transform: `translateX(${i * 80}px)`,
               }}
               className={cn(
-                "absolute rounded-[50px] object-cover transition-transform duration-300",
+                "absolute rounded-[50px] object-cover transition-[scale,filter,translate,rotate] duration-300",
                 "z-[var(--zi)] rotate-[var(--rot)]",
                 i === 0 && "-translate-y-5 scale-y-[0.75]",
                 i < images.length - 1 && "contrast-[0.3]",
