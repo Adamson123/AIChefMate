@@ -99,7 +99,10 @@ button {
 .lightGreenliquidAnimationButton:hover {
   background-position: 500% 100%;
 }
-
+/* 
+.slidingImage {
+  transition-property: scale, filter, translate, rotate;
+} */
 /* html,
 body {
   overflow-x: hidden;
