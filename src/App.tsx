@@ -1,3 +1,4 @@
+import Benefits from "./components/Benefits";
 import Demo from "./components/Demo";
 import Hero from "./components/hero/Hero";
 import HowItWorks from "./components/HowItWorks";
@@ -10,6 +11,7 @@ function App() {
       <Hero />
       <Demo />
       <HowItWorks />
+      <Benefits />
     </main>
   );
 }

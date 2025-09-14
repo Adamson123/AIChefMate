@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 :root {
-  --max-section-width: 1500px;
+  --max-section-width: 1400px;
 }
 
 @theme {
