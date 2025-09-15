@@ -28,7 +28,7 @@
   @apply text-[25px] md:text-[30px] xl:text-[35px];
 }
 @utility text-h4 {
-  @apply text-[19px] md:text-[24px] xl:text-[29px];
+  @apply text-[19px] md:text-[20px] xl:text-[25px];
 }
 @utility text-p {
   @apply text-[16px] md:text-[17px] xl:text-[19px];

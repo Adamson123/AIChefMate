@@ -21,6 +21,7 @@ const Benefit = ({
     <motion.div
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       className={cn(
         "bg-secondary-light-green flex h-full max-w-[320px] flex-col gap-y-7 rounded-[250px] px-12 py-18",
         className,
@@ -49,6 +50,7 @@ const Benefits = () => {
           <motion.img
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             className="aspect-square h-full w-full max-w-[320px] rounded-[250px] max-md:hidden lg:max-xl:hidden"
             src={bag}
             alt="Bag with foodstuffs"
@@ -84,6 +86,7 @@ const Benefits = () => {
           <motion.img
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             className="aspect-square w-full max-w-[320px] rounded-full max-md:hidden lg:max-xl:hidden"
             src={markus}
             alt="Bag with foodstuffs"

@@ -29,6 +29,7 @@ const BouncingImageRectangle = ({
       <motion.img
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
         className="aspect-square w-[45%] object-cover"
         src={first}
         alt="Recipe 1"
@@ -39,13 +40,15 @@ const BouncingImageRectangle = ({
         <motion.h3
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-h3"
+          viewport={{ once: true }}
+          className="text-h4"
         >
           {text}
         </motion.h3>
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
           <Button
             colorType="light"
@@ -90,7 +93,7 @@ const RollingImageRectangle = ({
   return (
     <div
       className={cn(
-        "relative flex w-full items-center rounded-[50px] border-2 p-7 max-[650px]:hidden lg:max-xl:py-4",
+        "relative flex w-full items-center rounded-[50px] border-2 p-7 max-[650px]:hidden",
         className,
       )}
     >
@@ -105,7 +108,7 @@ const RollingImageRectangle = ({
           textContainerClassName,
         )}
       >
-        <h3 className="text-h3 max-w-[90%]">{text}</h3>
+        <h3 className="text-h4 max-w-[90%]">{text}</h3>
         <Button
           colorType="light"
           className="changeArrowColorOnHover flex items-center gap-x-3 border-2"
@@ -121,6 +124,7 @@ const RollingImageRectangle = ({
           imageWhileInView || { left: `${maxPercentage}%`, rotate: "0deg" }
         }
         transition={{ duration: 1, delay: 0.3 }}
+        viewport={{ once: true }}
         className={cn(
           "absolute right-0 aspect-square w-[35%] object-cover",
           imageClassName,
