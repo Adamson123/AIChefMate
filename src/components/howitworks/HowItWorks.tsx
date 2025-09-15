@@ -1,16 +1,17 @@
 import { useRef, useState } from "react";
-import { cn } from "../lib/cn";
-import Button from "./ui/Button";
-import NotchedSection from "./ui/NotchedSection";
-import SectionHeader from "./ui/SectionHeader";
-import arrow from "/assets/howitworks/arrow.svg";
+import { cn } from "../../lib/cn";
+import Button from "../ui/Button";
+import NotchedSection from "../ui/NotchedSection";
+import SectionHeader from "../ui/SectionHeader";
 import front from "/assets/howitworks/front.jpg";
 import middle from "/assets/howitworks/middle.jpg";
 import back from "/assets/howitworks/back.jpg";
-import { delay } from "../utils";
-import ArrowSvg from "./ui/ArrowSvg";
+import { delay } from "../../utils";
+import ArrowSvg from "../ui/ArrowSvg";
+import LeftContent from "./LeftContent";
+import RightContent from "./RightContent";
 
-const features = [
+const featuresData = [
   {
     index: "3",
     image: back,
@@ -34,9 +35,11 @@ const features = [
   },
 ];
 
+export type HowItWorkFeaturesType = typeof featuresData;
+
 const HowItWorksElements = () => {
   const imagesRef = useRef<(HTMLImageElement | null)[]>([]);
-  const [images, setImages] = useState(features);
+  const [features, setFeatures] = useState(featuresData);
   const [isCarouselAnimating, setIsCarouselAnimating] = useState(false);
 
   const vars = ["--tx", "--sm-tx", "--rot", "--zi"];
@@ -119,7 +122,7 @@ const HowItWorksElements = () => {
   const next = async () => {
     const imageElements = imagesRef.current as HTMLImageElement[];
     move(imageElements, () => {
-      setImages((prev) => {
+      setFeatures((prev) => {
         return [prev[frontIndex], prev[backIndex], prev[middleIndex]];
       });
     });
@@ -128,7 +131,7 @@ const HowItWorksElements = () => {
   const prev = async () => {
     const imageElements = (imagesRef.current as HTMLImageElement[]).reverse();
     move(imageElements, () => {
-      setImages((prev) => {
+      setFeatures((prev) => {
         return [prev[middleIndex], prev[frontIndex], prev[backIndex]];
       });
     });
@@ -143,76 +146,11 @@ const HowItWorksElements = () => {
         titleClassName="min-[530px]:text-nowrap"
       />
       {/*  md:grid-cols-2 */}
-      <div className="mt-35 flex gap-x-[7%] max-lg:flex-col max-md:mt-24 lg:max-xl:gap-x-[4%]">
+      <div className="mt-28 flex gap-x-[7%] max-lg:flex-col max-md:mt-18 lg:max-xl:gap-x-[4%]">
         {/* Left */}
-        <div className="flex flex-col max-lg:items-center max-lg:text-center lg:w-[50%]">
-          <div className="mb-5">
-            <h2 className="text-h2">0{images[2].index}</h2>
-            <h3 className="text-h3">{images[2].title}</h3>
-          </div>
-          <p className="leading-p mb-15 h-22 max-w-150 max-md:h-15 md:max-lg:h-17">
-            {images[2].description}
-          </p>
-          <div className="mb-10 flex gap-x-4 max-lg:hidden">
-            <Button
-              onClick={prev}
-              colorType="transparent"
-              className="changeArrowColorOnHover py-4 md:py-4 xl:py-4"
-            >
-              <ArrowSvg className="rotate-180" />
-            </Button>
-            <Button
-              onClick={next}
-              colorType="light"
-              className="hover:[&_path]:fill-secondary-light-green border-2"
-            >
-              <ArrowSvg />
-            </Button>
-          </div>
-          <h3 className="text-h3 translate-y-[30%] max-xl:translate-y-5 max-lg:hidden">
-            0{images[2].index}/03
-          </h3>
-        </div>
+        <LeftContent features={features} next={next} prev={prev} />
         {/* Right */}
-        {/* This will affect the section container's height */}
-        <div className={cn("relative lg:w-[40%]")}>
-          {images.map((feature, i) => (
-            <img
-              key={feature.image}
-              ref={(el) => {
-                imagesRef.current[i] = el;
-              }}
-              src={feature.image}
-              style={{
-                ["--tx" as any]: `${i * 80}px`,
-                ["--sm-tx" as any]: `${i * 30}px`,
-                ["--rot" as any]: `${i * 7}deg`,
-                ["--zi" as any]: i,
-              }}
-              className={cn(
-                "slidingImage absolute rounded-[50px] object-cover transition-[scale,filter,translate,rotate] duration-300",
-                "z-[var(--zi)] rotate-[var(--rot)]",
-                i === 0 && "-translate-y-5 scale-y-[0.75]",
-                i < images.length - 1 && "contrast-[0.3]",
-                "translate-x-[var(--tx)]",
-                "max-lg:translate-y-9",
-                "max-lg:left-[45%] max-lg:-translate-x-[calc(50%-var(--tx))]",
-                "max-md:-translate-x-[calc(50%-var(--sm-tx))]",
-                "aspect-[1/1.3] w-[65%] max-w-[330px]",
-                "max-md:max-w-[300px]",
-                "md:min-w-[275px]",
-              )}
-            />
-          ))}
-
-          <div
-            className={cn(
-              "w-[65%] max-w-[330px] max-lg:aspect-[1/1.6] xl:aspect-[1/1.3]",
-              "max-md:max-w-[300px]",
-              "md:min-w-[275px]",
-            )}
-          />
-        </div>
+        <RightContent features={features} imagesRef={imagesRef} />
       </div>
       <div className="flex w-full justify-center gap-x-4 lg:hidden">
         <Button
@@ -231,7 +169,7 @@ const HowItWorksElements = () => {
         </Button>
       </div>
       <h3 className="text-h3 translate-y-13 text-center lg:hidden">
-        0{images[2].index}/03
+        0{features[2].index}/03
       </h3>
     </div>
   );
