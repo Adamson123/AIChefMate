@@ -19,18 +19,21 @@ const Demo = () => {
   });
 
   return (
-    <section ref={containerRef} className="common-l-padding relative h-[400vh]">
+    <section ref={containerRef} className="relative h-[400vh]">
       <div className="sticky top-0 bg-white pt-12 pb-25">
-        <div className="common-max-width mx-auto">
+        {/* <div className="common-max-width mx-auto flex items-center justify-center">
           <SectionHeader
             title="Demo"
             description="See how it works: your personalized meal planning journey"
           />
-        </div>
-        {/* min-[1873px]:pl-[10%] xl:pl-[3%] */}
-        <div className="flex justify-end">
-          {/* Curve Bg */}
+        </div> */}
+        <SectionHeader
+          title="Demo"
+          description="See how it works: your personalized meal planning journey"
+        />
 
+        <div className="common-l-padding flex justify-end">
+          {/* Curve Bg */}
           <div
             className={cn(
               "border-secondary-green common-y-padding flex w-full justify-start rounded-l-full border-r-0 md:border",

@@ -36,10 +36,8 @@ const features = [
 
 const HowItWorksElements = () => {
   const imagesRef = useRef<(HTMLImageElement | null)[]>([]);
-  //const [images, setImages] = useState([back, middle, front]);
   const [images, setImages] = useState(features);
-  const [current, setCurrent] = useState(0);
-  const [isSliding, setIsSliding] = useState(false);
+  const [isCarouselAnimating, setIsCarouselAnimating] = useState(false);
 
   const vars = ["--tx", "--sm-tx", "--rot", "--zi"];
 
@@ -75,52 +73,53 @@ const HowItWorksElements = () => {
     first.className = secondClass;
   };
 
+  // Animate one carousel step and reorder items
   const move = async (
     imageElements: HTMLImageElement[],
-    callback: () => void,
+    callback: () => void, // Callback to update state after DOM transition
   ) => {
-    if (isSliding) return;
+    if (isCarouselAnimating) return; // Prevent re-entry if an animation is already running
 
-    setIsSliding(true);
+    setIsCarouselAnimating(true); // Lock during carousel animations
 
-    const [back, middle, front] = imageElements;
+    const [back, middle, front] = imageElements; // Aliases for positional elements
+    const frontImage = imageElements[2]; // Explicit reference to the front image
+    const frontImageVarObj = getVars(frontImage); // Snapshot front image CSS custom properties
 
-    const frontImage = imageElements[2];
-    const frontImageVarObj = getVars(frontImage);
+    frontImage.style.setProperty("--rot", "45deg"); // Rotate front image out
+    frontImage.style.setProperty("--tx", "200%"); // Move it off to the right (large screens)
+    frontImage.style.setProperty("--sm-tx", "200%"); // Move it off to the right (small screens)
 
-    frontImage.style.setProperty("--rot", "45deg");
-    frontImage.style.setProperty("--tx", "200%");
-    frontImage.style.setProperty("--sm-tx", "200%");
+    await delay(); // Wait for exit transition to complete
 
-    await delay();
+    assignStyles(frontImage, frontImage, { varsObj: frontImageVarObj }); // Restore original front vars for re-entry
 
-    assignStyles(frontImage, frontImage, { varsObj: frontImageVarObj });
+    const backVarsObj = getVars(back); // Snapshot back image vars (to become new front)
+    const backClassNames = back.className; // Snapshot back image classes
 
-    const backVarsObj = getVars(back);
-    const backClassNames = back.className;
-
-    assignStyles(back, middle);
-    assignStyles(middle, front);
+    assignStyles(back, middle); // Back takes middle's styles/classes
+    assignStyles(middle, front); // Middle takes front's styles/classes
     assignStyles(front, back, {
-      varsObj: backVarsObj,
-      secondClass: backClassNames,
-    });
+      // Front takes back's saved styles/classes
+      varsObj: backVarsObj, // Provide saved vars from back
+      secondClass: backClassNames, // Provide saved classes from back
+    }); // End of swap chain
 
-    await delay();
+    await delay(); // Wait for swap transition to complete
 
-    callback();
+    callback(); // Apply logical reordering in React state
 
-    setIsSliding(false);
+    setIsCarouselAnimating(false); // Unlock carousel animations
   };
+
+  const backIndex = 0;
+  const middleIndex = 1;
+  const frontIndex = 2;
 
   const next = async () => {
     const imageElements = imagesRef.current as HTMLImageElement[];
     move(imageElements, () => {
       setImages((prev) => {
-        const backIndex = 0;
-        const middleIndex = 1;
-        const frontIndex = 2;
-
         return [prev[frontIndex], prev[backIndex], prev[middleIndex]];
       });
     });
@@ -130,16 +129,13 @@ const HowItWorksElements = () => {
     const imageElements = (imagesRef.current as HTMLImageElement[]).reverse();
     move(imageElements, () => {
       setImages((prev) => {
-        const backIndex = 0;
-        const middleIndex = 1;
-        const frontIndex = 2;
         return [prev[middleIndex], prev[frontIndex], prev[backIndex]];
       });
     });
   };
 
   return (
-    <div className="common-max-width common-x-padding mx-auto max-md:pb-17">
+    <div className="common-max-width common-x-padding mx-auto max-lg:pb-9">
       <SectionHeader
         title="How it works"
         description="Step into the world of hassle-free meal planning with our easy 3-step process"
@@ -147,21 +143,21 @@ const HowItWorksElements = () => {
         titleClassName="min-[530px]:text-nowrap"
       />
       {/*  md:grid-cols-2 */}
-      <div className="mt-7 flex gap-x-[7%] max-lg:mt-25 max-lg:flex-col lg:max-xl:gap-x-[4%]">
+      <div className="mt-35 flex gap-x-[7%] max-lg:flex-col max-md:mt-24 lg:max-xl:gap-x-[4%]">
         {/* Left */}
         <div className="flex flex-col max-lg:items-center max-lg:text-center lg:w-[50%]">
           <div className="mb-5">
             <h2 className="text-h2">0{images[2].index}</h2>
             <h3 className="text-h3">{images[2].title}</h3>
           </div>
-          <p className="mb-15 h-22 max-w-150 max-md:h-15">
+          <p className="leading-p mb-15 h-22 max-w-150 max-md:h-15 md:max-lg:h-17">
             {images[2].description}
           </p>
-          <div className="mb-10 flex gap-x-4">
+          <div className="mb-10 flex gap-x-4 max-lg:hidden">
             <Button
               onClick={prev}
               colorType="transparent"
-              className="hover:[&_path]:fill-secondary-light-green py-4 md:py-4 xl:py-4"
+              className="changeArrowColorOnHover py-4 md:py-4 xl:py-4"
             >
               <ArrowSvg className="rotate-180" />
             </Button>
@@ -179,18 +175,7 @@ const HowItWorksElements = () => {
         </div>
         {/* Right */}
         {/* This will affect the section container's height */}
-        <div
-          className={cn(
-            "relative lg:w-[40%]",
-            // "max-[593px]:h-[400px]",
-            // "min-[593px]:max-lg:h-[400px]", //
-            //  "min-[593px]:max-md:h-[400px]",
-            // "max-md:h-[380px]",
-            "h-[400px]",
-            "md:max-lg:h-[500px]",
-            "lg:max-xl:h-[400px]",
-          )}
-        >
+        <div className={cn("relative lg:w-[40%]")}>
           {images.map((feature, i) => (
             <img
               key={feature.image}
@@ -203,27 +188,49 @@ const HowItWorksElements = () => {
                 ["--sm-tx" as any]: `${i * 30}px`,
                 ["--rot" as any]: `${i * 7}deg`,
                 ["--zi" as any]: i,
-                //  transitionProperty: "scale,filter,translate,rotate;",
               }}
               className={cn(
                 "slidingImage absolute rounded-[50px] object-cover transition-[scale,filter,translate,rotate] duration-300",
                 "z-[var(--zi)] rotate-[var(--rot)]",
                 i === 0 && "-translate-y-5 scale-y-[0.75]",
                 i < images.length - 1 && "contrast-[0.3]",
-                /* Default Pos */ "translate-x-[var(--tx)]",
+                "translate-x-[var(--tx)]",
                 "max-lg:translate-y-9",
                 "max-lg:left-[45%] max-lg:-translate-x-[calc(50%-var(--tx))]",
                 "max-md:-translate-x-[calc(50%-var(--sm-tx))]",
                 "aspect-[1/1.3] w-[65%] max-w-[330px]",
                 "max-md:max-w-[300px]",
                 "md:min-w-[275px]",
-                //"h-[420px] w-[330px]",
               )}
             />
           ))}
+
+          <div
+            className={cn(
+              "w-[65%] max-w-[330px] max-lg:aspect-[1/1.6] xl:aspect-[1/1.3]",
+              "max-md:max-w-[300px]",
+              "md:min-w-[275px]",
+            )}
+          />
         </div>
       </div>
-      <h3 className="text-h3 translate-y-16 text-center md:translate-y-0 lg:hidden">
+      <div className="flex w-full justify-center gap-x-4 lg:hidden">
+        <Button
+          onClick={prev}
+          colorType="transparent"
+          className="hover:[&_path]:fill-secondary-light-green py-4 md:py-4 xl:py-4"
+        >
+          <ArrowSvg className="rotate-180" />
+        </Button>
+        <Button
+          onClick={next}
+          colorType="light"
+          className="hover:[&_path]:fill-secondary-light-green border-2"
+        >
+          <ArrowSvg />
+        </Button>
+      </div>
+      <h3 className="text-h3 translate-y-13 text-center lg:hidden">
         0{images[2].index}/03
       </h3>
     </div>
@@ -231,7 +238,7 @@ const HowItWorksElements = () => {
 };
 const HowItWorks = () => {
   return (
-    <section className="overflow-hidden pb-[70px]">
+    <section className="overflow-hidden pb-6 lg:pb-[70px]">
       <NotchedSection notchPos="bc" className="pt-17 lg:hidden">
         <HowItWorksElements />
       </NotchedSection>

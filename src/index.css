@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 :root {
-  --max-section-width: 1400px;
+  --max-section-width: 1430px;
 }
 
 @theme {
@@ -36,6 +36,14 @@
 
 @utility leading-h2 {
   @apply leading-9 md:leading-12 xl:leading-14;
+}
+
+@utility leading-h3 {
+  @apply leading-8 md:leading-10 xl:leading-12;
+}
+
+@utility leading-p {
+  @apply leading-[18px] md:leading-5 xl:leading-6;
 }
 
 @utility common-x-padding {
@@ -98,6 +106,11 @@ button {
 .greenliquidAnimationButton:hover,
 .lightGreenliquidAnimationButton:hover {
   background-position: 500% 100%;
+}
+
+.changeArrowColorOnHover:hover > path {
+  /* @apply fill-secondary-light-green; */
+  fill: var(--color-secondary-light-green) /* #d9ef78 */;
 }
 /* 
 .slidingImage {
