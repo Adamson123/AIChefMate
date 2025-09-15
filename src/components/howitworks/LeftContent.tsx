@@ -31,7 +31,7 @@ const LeftContent = ({
         <Button
           onClick={next}
           colorType="light"
-          className="hover:[&_path]:fill-secondary-light-green border-2"
+          className="changeArrowColorOnHover border-2"
         >
           <ArrowSvg />
         </Button>

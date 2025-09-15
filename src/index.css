@@ -108,7 +108,7 @@ button {
   background-position: 500% 100%;
 }
 
-.changeArrowColorOnHover:hover > path {
+.changeArrowColorOnHover:hover path {
   /* @apply fill-secondary-light-green; */
   fill: var(--color-secondary-light-green) /* #d9ef78 */;
 }

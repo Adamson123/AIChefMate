@@ -48,16 +48,16 @@ import { cn } from "../../lib/cn";
 const SectionHeader = ({
   title,
   description,
-  bgClassName,
+  // bgClassName,
   titleClassName,
 }: {
   title: string;
   description: string;
-  bgClassName?: string;
+  // bgClassName?: string;
   titleClassName?: string;
 }) => {
   return (
-    <div className="relative mb-18 flex flex-col items-center gap-3 px-4 text-center max-lg:mb-10">
+    <div className="relative mb-18 flex flex-col items-center gap-3 px-4 text-center max-md:mb-10">
       <div>
         <h2 className={cn("text-h2 leading-h2", titleClassName)}>{title}</h2>
       </div>
