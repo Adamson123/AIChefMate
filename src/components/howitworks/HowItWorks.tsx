@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { cn } from "../../lib/cn";
 import Button from "../ui/Button";
 import NotchedSection from "../ui/NotchedSection";
 import SectionHeader from "../ui/SectionHeader";
@@ -142,7 +141,7 @@ const HowItWorksElements = () => {
       <SectionHeader
         title="How it works"
         description="Step into the world of hassle-free meal planning with our easy 3-step process"
-        bgClassName="bg-primary"
+        //  bgClassName="bg-primary"
         titleClassName="min-[530px]:text-nowrap"
       />
       {/*  md:grid-cols-2 */}
