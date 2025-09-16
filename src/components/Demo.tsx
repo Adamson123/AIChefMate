@@ -11,31 +11,14 @@ const Demo = () => {
       " ",
     );
   const containerRef = useRef<HTMLElement | null>(null);
-  const [isCompleted, setIsCompleted] = useState(false);
-  const [isScrolledToContainer, setIscrolledToContainer] = useState(false);
 
   const { scrollProgress } = useMotionScroll({
     target: containerRef,
     offset: ["0.4 end", "0.6 start"],
   });
 
-  useEffect(() => {
-    if (scrollProgress >= 1) {
-      setIsCompleted(true);
-    }
-
-    if (!isScrolledToContainer && isCompleted) {
-      setIscrolledToContainer(true);
-      const containerElement = containerRef.current as HTMLElement;
-      containerElement.scrollIntoView({ block: "nearest" });
-    }
-  }, [scrollProgress, isCompleted, isScrolledToContainer]);
-
   return (
-    <section
-      ref={containerRef}
-      className={cn("relative", !isCompleted && "h-[300vh]")}
-    >
+    <section ref={containerRef} className={cn("relative h-[300vh]")}>
       <div className="sticky top-0 bg-white pt-12 pb-25">
         {/* <div className="common-max-width mx-auto flex items-center justify-center">
           <SectionHeader
@@ -76,8 +59,7 @@ const Demo = () => {
               {/* Text */}
               <div className="text-h2 leading-h2 text-center md:text-right [&>span]:transition-all [&>span]:duration-300">
                 {everyMeal.map((char, i) => {
-                  const isRaised =
-                    !isCompleted && scrollProgress * everyMeal.length <= i;
+                  const isRaised = scrollProgress * everyMeal.length <= i;
                   return (
                     <span
                       key={i}

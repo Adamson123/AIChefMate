@@ -28,7 +28,7 @@
   @apply text-[25px] md:text-[30px] xl:text-[35px];
 }
 @utility text-h4 {
-  @apply text-[19px] md:text-[20px] xl:text-[25px];
+  @apply text-[19px] md:text-[25px];
 }
 @utility text-p {
   @apply text-[16px] md:text-[17px] xl:text-[19px];
@@ -94,7 +94,7 @@ button {
 .greenliquidAnimationButton,
 .lightGreenliquidAnimationButton {
   background-repeat: repeat-x;
-  background-position: 0 -200%;
+  background-position: 0 -350%;
   transition:
     background 1.5s ease,
     color 1.5s ease;
@@ -112,6 +112,12 @@ button {
   /* @apply fill-secondary-light-green; */
   fill: var(--color-secondary-light-green) /* #d9ef78 */;
 }
+
+/* .curvedCorner {
+  clip-path: path("M 50% 0% L 100% 100% L 0% 100% Z");
+  
+} */
+
 /* 
 .slidingImage {
   transition-property: scale, filter, translate, rotate;

@@ -21,7 +21,7 @@ const BouncingImageRectangle = ({
   return (
     <div
       className={cn(
-        "relative flex max-w-[500px] flex-col items-center rounded-[50px] border-2 p-5 min-[650px]:hidden",
+        "relative flex max-w-[500px] flex-col items-center rounded-[50px] border-2 p-5 min-[550px]:hidden",
         className,
       )}
     >
@@ -93,7 +93,7 @@ const RollingImageRectangle = ({
   return (
     <div
       className={cn(
-        "relative flex w-full items-center rounded-[50px] border-2 p-7 max-[650px]:hidden",
+        "relative flex w-full items-center rounded-[50px] border-2 p-7 max-[550px]:hidden",
         className,
       )}
     >
@@ -134,7 +134,7 @@ const RollingImageRectangle = ({
       />
 
       {/* Image Space */}
-      <div className="w-[30%]" />
+      <div className="aspect-square w-[33%]" />
     </div>
   );
 };
