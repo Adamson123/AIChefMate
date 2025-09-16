@@ -1,7 +1,6 @@
 import { cn } from "../lib/cn";
 import Button, { type ColorType } from "./ui/Button";
 import SectionHeader from "./ui/SectionHeader";
-import artichokes from "/assets/pricing/artichokes.jpg";
 
 const Plan = ({
   name,
@@ -10,12 +9,14 @@ const Plan = ({
   bestFor,
   className,
   buttonType,
+  buttonClassName,
 }: {
   name: string;
   price: number;
   features: string[];
   bestFor: string;
   className?: string;
+  buttonClassName?: string;
   buttonType?: ColorType;
 }) => {
   return (
@@ -46,7 +47,10 @@ const Plan = ({
       {/*  */}
       <Button
         colorType={buttonType || "transparent"}
-        className="border-secondary-green mt-20 w-full border-2"
+        className={cn(
+          "border-secondary-green mt-20 w-full justify-end self-start border-2",
+          buttonClassName,
+        )}
       >
         Get Started For Free
       </Button>
@@ -78,6 +82,7 @@ const Pricing = () => {
             ]}
             bestFor="Those who want to explore thae platform's basic functionalities."
             className="lg:max-w-[460px] lg:pr-21 xl:pr-25"
+            buttonClassName="mt-auto"
           />
           <Plan
             name="Standard Plan"
