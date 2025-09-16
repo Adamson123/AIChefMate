@@ -4,7 +4,7 @@ import RecipeRightContent from "./RecipeRightContent";
 
 const Recipes = () => {
   return (
-    <section className="pb-[130px] max-md:pb-24">
+    <section className="pb-[130px] max-md:pb-12">
       <div className="common-max-width common-x-padding mx-auto">
         <SectionHeader
           title="Recipes"

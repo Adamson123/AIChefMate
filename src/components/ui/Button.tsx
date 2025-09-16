@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from "react";
 import { cn } from "../../lib/cn";
 
-type ColorType = "dark" | "light" | "transparent";
+export type ColorType = "dark" | "light" | "transparent";
 
 const getClassesBasedOncolorType = (colorType: ColorType) => {
   switch (colorType) {

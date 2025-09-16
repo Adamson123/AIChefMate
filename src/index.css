@@ -1,3 +1,9 @@
+/* 
+
+Manual hover styles were added because Tailwind’s hover: variant didn’t trigger on iOS browser. After fixing the iOS issue, usage reverted to Tailwind hover: utilities.
+
+*/
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Syne:wght@400..800&display=swap");
 
 @import "tailwindcss";
@@ -12,6 +18,8 @@
   --color-secondary-light-green: #d9ef78;
   --font-syne: "Syne", ui-sans-serif, system-ui, sans-serif;
 }
+
+@custom-variant hover (&:hover);
 
 @utility common-max-width {
   @apply max-w-[var(--max-section-width)];
@@ -84,6 +92,7 @@ button {
 .lightGreenliquidAnimationButton {
   background-image: url(/assets/l-wave-x-2.png);
 }
+
 .lightGreenliquidAnimationButton:hover {
   @apply text-secondary-green;
 }
@@ -96,8 +105,8 @@ button {
   background-repeat: repeat-x;
   background-position: 0 -350%;
   transition:
-    background 1.5s ease,
-    color 1.5s ease;
+    background 1s ease,
+    color 1s ease;
   background-size: auto 100px;
   /* height: 500px;
   width: 500px; */
