@@ -1,6 +1,12 @@
 import { cn } from "../../lib/cn";
 
-const Attribution = ({ className }: { className?: string }) => {
+const Attribution = ({
+  className,
+  designerClassName,
+}: {
+  className?: string;
+  designerClassName?: string;
+}) => {
   return (
     <p className={cn("text-center text-sm text-white", className)}>
       Design by{" "}
@@ -8,7 +14,10 @@ const Attribution = ({ className }: { className?: string }) => {
         href="https://www.figma.com/@olgaaverchenko"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-secondary-light-green underline"
+        className={cn(
+          "text-secondary-light-green underline",
+          designerClassName,
+        )}
       >
         Olga
       </a>{" "}

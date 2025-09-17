@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import HealthyInsights from "./components/HealthyInsights";
 import Hero from "./components/hero/Hero";
 import HowItWorks from "./components/howitworks/HowItWorks";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import NeedAssistance from "./components/NeedAssistance";
 import Pricing from "./components/Pricing";
 import Recipes from "./components/recipes/Recipes";

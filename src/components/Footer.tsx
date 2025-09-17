@@ -28,6 +28,7 @@ const Footer = () => {
               {links.map((link) => (
                 <li key={link.name}>
                   <a
+                    key={link.name}
                     href={link.path}
                     className="text-secondary-light-green transition-colors duration-300"
                   >

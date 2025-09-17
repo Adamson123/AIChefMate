@@ -145,7 +145,7 @@ const HowItWorksElements = () => {
         titleClassName="min-[530px]:text-nowrap"
       />
       {/*  md:grid-cols-2 */}
-      <div className="mt-28 flex gap-x-[7%] max-lg:flex-col max-md:mt-18 lg:max-xl:gap-x-[4%]">
+      <div className="mt-22 flex gap-x-[7%] max-lg:flex-col max-md:mt-18 lg:max-xl:gap-x-[4%]">
         {/* Left */}
         <LeftContent features={features} next={next} prev={prev} />
         {/* Right */}
