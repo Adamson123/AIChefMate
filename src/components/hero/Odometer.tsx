@@ -7,11 +7,12 @@ const NumCols = ({
   colIndex,
   className,
   //  finished,
-  // count,
+  count,
 }: {
   rowIndex: number;
   colIndex: number;
   className?: string;
+  count: string;
 }) => {
   const colRef = useRef<HTMLDivElement>(null);
   // const rowIndexToString = rowIndex.toString();
@@ -36,7 +37,7 @@ const NumCols = ({
     window.addEventListener("resize", updateColPosition);
 
     return () => window.removeEventListener("resize", updateColPosition);
-  }, [colIndex, rowIndex]);
+  }, [colIndex, rowIndex, count]);
 
   return (
     <div
@@ -136,6 +137,7 @@ const Odometer = ({
             rowIndex={i}
             colIndex={Number(num)}
             className={numColsClassName}
+            count={count}
           />
         ),
       )}
