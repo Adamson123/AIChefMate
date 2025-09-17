@@ -114,7 +114,7 @@ button {
 
 .greenliquidAnimationButton:hover,
 .lightGreenliquidAnimationButton:hover {
-  background-position: 500% 100%;
+  background-position: 500% 99%;
 }
 
 .changeArrowColorOnHover:hover path {

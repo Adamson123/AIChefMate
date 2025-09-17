@@ -1,5 +1,6 @@
 import Benefits from "./components/Benefits";
 import Demo from "./components/Demo";
+import HealthyInsights from "./components/HealthyInsights";
 import Hero from "./components/hero/Hero";
 import HowItWorks from "./components/howitworks/HowItWorks";
 import Navbar from "./components/Navbar";
@@ -18,6 +19,7 @@ function App() {
       <Recipes />
       <Testimonials />
       <Pricing />
+      <HealthyInsights />
     </main>
   );
 }

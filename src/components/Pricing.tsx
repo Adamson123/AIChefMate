@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { cn } from "../lib/cn";
 import Button, { type ColorType } from "./ui/Button";
 import SectionHeader from "./ui/SectionHeader";
@@ -9,14 +10,14 @@ const Plan = ({
   bestFor,
   className,
   buttonType,
-  buttonClassName,
+  divClassName,
 }: {
   name: string;
   price: number;
   features: string[];
   bestFor: string;
   className?: string;
-  buttonClassName?: string;
+  divClassName?: string;
   buttonType?: ColorType;
 }) => {
   return (
@@ -29,15 +30,41 @@ const Plan = ({
       <h3 className="text-h3 text-center">{name}</h3>
       {/* Price */}
       <div className="items-end -space-y-2 text-center">
-        <p className="text-h2 font-semibold">${price}</p>
+        {/*
+          initial={{ scale: 1 }}
+          animate={{ scale: [1, 1.18, 0.94, 1.12, 1] }}
+          transition={{
+            duration: 2.2,
+            times: [0, 0.25, 0.5, 0.75, 1],
+            repeat: Infinity,
+            repeatDelay: 1,
+            ease: ["easeOut", "easeInOut", "easeOut", "easeInOut"],
+          }}
+         */}
+
+        <motion.p
+          initial={{ scale: 1.5 }}
+          whileInView={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-h2 font-semibold"
+        >
+          ${price}
+        </motion.p>
         <p>per month</p>
       </div>
       {/* Features */}
       <ul className="mt-10 flex list-disc flex-col gap-4">
         {features.map((feature) => (
-          <li key={feature} className="pl-3">
+          <motion.li
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            key={feature}
+            className="pl-3"
+          >
             {feature}
-          </li>
+          </motion.li>
         ))}
       </ul>
       {/*  */}
@@ -45,22 +72,27 @@ const Plan = ({
         <strong>Best For</strong>: {bestFor}
       </p>
       {/*  */}
-      <Button
-        colorType={buttonType || "transparent"}
-        className={cn(
-          "border-secondary-green mt-20 w-full justify-end self-start border-2",
-          buttonClassName,
-        )}
+      <motion.div
+        initial={{ scale: 1.2 }}
+        whileInView={{ scale: 1 }}
+        transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+        viewport={{ once: true }}
+        className={cn("mt-20 w-full", divClassName)}
       >
-        Get Started For Free
-      </Button>
+        <Button
+          colorType={buttonType || "transparent"}
+          className={"border-secondary-green w-full border-2 !py-2.5"}
+        >
+          Get Started For Free
+        </Button>
+      </motion.div>
     </div>
   );
 };
 
 const Pricing = () => {
   return (
-    <section className="overflow-x-clip">
+    <section className="overflow-x-clip pb-[170px] max-md:pb-24">
       <div className="common-max-width mx-auto">
         <SectionHeader
           title="Pricing"
@@ -82,7 +114,7 @@ const Pricing = () => {
             ]}
             bestFor="Those who want to explore thae platform's basic functionalities."
             className="lg:max-w-[460px] lg:pr-21 xl:pr-25"
-            buttonClassName="mt-auto"
+            divClassName="lg:mt-auto"
           />
           <Plan
             name="Standard Plan"

@@ -15,7 +15,7 @@ const getClassesBasedOncolorType = (colorType: ColorType) => {
 };
 
 /**
- * @prop colorType: light or transparent brings up dark green color liquid, while dark  brings up light green color liquid
+ * @prop colorType: light or transparent brings up dark green color liquid, while dark  brings up light green color liquid 
    
 */
 const Button = (

@@ -72,7 +72,7 @@ const RecipeRightContent = () => {
           viewport={{ once: true }}
           className="absolute top-[5%] left-[4%] flex h-[12%] w-[67%] items-center justify-end gap-3"
         >
-          <h4 className="min-[450px]:text-md leading-3 max-[450px]:text-sm">
+          <h4 className="min-[450px]:text-md leading-3 max-[450px]:text-sm md:text-2xl">
             Explore more recipes
           </h4>
           <Button
