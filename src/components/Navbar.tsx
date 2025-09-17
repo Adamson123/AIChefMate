@@ -10,8 +10,8 @@ const links = [
 
 const Navbar = () => {
   return (
-    <nav className="bg-primary pt-[40px] font-semibold md:max-lg:text-[15px]">
-      <div className="common-max-width common-x-padding mx-auto flex items-center justify-between">
+    <nav className="bg-primary relative flex flex-col pt-[40px] pb-15 font-semibold md:pb-25 md:max-lg:text-[15px]">
+      <div className="common-max-width common-x-padding fixed top-10 z-20 mx-auto flex w-[95%] items-center justify-between self-center rounded-[50px] bg-transparent p-4 shadow backdrop-blur-md">
         {/* Logo */}
         <div className="w-[15%]">
           <img
