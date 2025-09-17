@@ -44,6 +44,7 @@ const Demo = () => {
                 className="absolute top-1/2 left-1/2 h-15 w-15 -translate-x-1/2 -translate-y-1/2"
               />
             }
+            rightContentClassName="leading-9 md:text-right md:leading-12 xl:leading-14"
           />
         </div>
       </div>

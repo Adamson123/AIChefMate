@@ -40,7 +40,7 @@ const NeedAssistance = () => {
                 Get Support
               </Button>
             }
-            rightContentClassName="md:text-left text-h4 !leading-[32px] max-md:items-center max-md:!leading-[20px]"
+            rightContentClassName="md:text-left text-h4  max-md:items-center leading-h4"
           />
         </div>
       </div>

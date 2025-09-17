@@ -4,7 +4,7 @@ Manual hover styles were added because Tailwind’s hover: variant didn’t trig
 
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Syne:wght@400..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Syne:wght@400..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 @import "tailwindcss";
 
@@ -17,6 +17,7 @@ Manual hover styles were added because Tailwind’s hover: variant didn’t trig
   --color-secondary-green: #213d34;
   --color-secondary-light-green: #d9ef78;
   --font-syne: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-work-syne: "Work Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
 @custom-variant hover (&:hover);
@@ -26,17 +27,17 @@ Manual hover styles were added because Tailwind’s hover: variant didn’t trig
 }
 
 @utility text-h1 {
-  @apply text-[34px] md:text-[40px] lg:text-[50px] xl:text-[55px];
+  @apply font-syne text-[34px] md:text-[40px] lg:text-[50px] xl:text-[55px];
 }
 
 @utility text-h2 {
-  @apply text-[30px] md:text-[38px] lg:text-[43px] xl:text-[47px];
+  @apply font-syne text-[30px] md:text-[38px] lg:text-[43px] xl:text-[47px];
 }
 @utility text-h3 {
-  @apply text-[25px] md:text-[30px] xl:text-[35px];
+  @apply font-syne text-[25px] md:text-[30px] xl:text-[35px];
 }
 @utility text-h4 {
-  @apply text-[19px] md:text-[25px];
+  @apply font-syne text-[19px] md:text-[25px];
 }
 @utility text-p {
   @apply text-[16px] md:text-[17px] xl:text-[19px];
@@ -50,8 +51,12 @@ Manual hover styles were added because Tailwind’s hover: variant didn’t trig
   @apply leading-8 md:leading-10 xl:leading-12;
 }
 
+@utility leading-h4 {
+  @apply leading-6 md:leading-8 xl:leading-9;
+}
+
 @utility leading-p {
-  @apply leading-[18px] md:leading-5 xl:leading-6;
+  @apply leading-[20px] md:leading-6 xl:leading-7;
 }
 
 @utility common-x-padding {

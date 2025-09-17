@@ -41,7 +41,7 @@ const CurvedBackground = ({
           {/* Text */}
           <div
             className={cn(
-              "text-h2 flex flex-col text-center leading-9 md:text-right md:leading-12 xl:leading-14 [&>span]:transition-all [&>span]:duration-300",
+              "text-h2 flex flex-col text-center md:text-right [&>span]:transition-all [&>span]:duration-300",
               rightContentClassName,
             )}
           >

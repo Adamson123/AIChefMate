@@ -13,7 +13,7 @@ import Testimonials from "./components/Testimonials";
 
 function App() {
   return (
-    <main className="text-p font-syne text-secondary-green">
+    <main className="text-p font-work-syne text-secondary-green overflow-x-clip">
       <Navbar />
       <Hero />
       <Demo />

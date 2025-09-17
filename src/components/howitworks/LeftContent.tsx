@@ -17,7 +17,7 @@ const LeftContent = ({
         <h2 className="text-h2">0{features[2].index}</h2>
         <h3 className="text-h3">{features[2].title}</h3>
       </div>
-      <p className="leading-p mb-15 h-22 max-w-150 max-md:h-15 md:max-lg:h-17">
+      <p className="mb-15 h-22 max-w-150 max-md:h-15 md:max-lg:h-17">
         {features[2].description}
       </p>
       <div className="mb-10 flex gap-x-4 max-lg:hidden">

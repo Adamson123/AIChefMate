@@ -23,12 +23,12 @@ const Benefit = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       className={cn(
-        "bg-secondary-light-green flex h-full max-w-[320px] flex-col gap-y-7 rounded-[250px] px-12 py-18",
+        "bg-secondary-light-green flex h-full max-w-[320px] flex-col gap-y-7 rounded-[250px] p-12 py-18 xl:max-2xl:py-13",
         className,
       )}
     >
       <h3 className={`text-h3 leading-h3 ${titleClassName}`}>{title}</h3>
-      <p className={cn("leading-p", descriptionClassName)}>{description}</p>
+      <p className={cn("", descriptionClassName)}>{description}</p>
     </motion.div>
   );
 };
