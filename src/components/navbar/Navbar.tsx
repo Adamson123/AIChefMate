@@ -16,15 +16,12 @@ const Navbar = () => {
     <nav className="bg-primary relative flex flex-col pt-[40px] pb-15 font-semibold md:pb-25 md:max-lg:text-[15px]">
       <div className="common-max-width fixed top-7 z-20 mx-auto flex w-[95%] items-center justify-between self-center rounded-[50px] bg-transparent p-[22px] shadow backdrop-blur-md">
         {/* Logo */}
-        <div className="w-[15%] items-center gap-2">
+        <div className="w-[15%]">
           <img
-            className="h-[25px] w-[40px] max-md:h-[35px] max-md:w-[50px]"
+            className="h-[45px] w-[65px]"
             src={logo}
             alt="AI chef mate logo"
           />
-          <h3 className="font-syne text-sm text-nowrap max-lg:text-xs max-md:hidden">
-            AI-ChefMate
-          </h3>
         </div>
         {/* Links */}
         <ul className="flex gap-10 max-md:hidden xl:gap-20">
