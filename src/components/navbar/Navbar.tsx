@@ -22,7 +22,7 @@ const Navbar = () => {
             src={logo}
             alt="AI chef mate logo"
           />
-          <h3 className="font-syne font-bold text-nowrap max-lg:text-xs max-md:hidden">
+          <h3 className="font-syne text-sm text-nowrap max-lg:text-xs max-md:hidden">
             AI-ChefMate
           </h3>
         </div>
@@ -32,7 +32,7 @@ const Navbar = () => {
             <li key={link.name}>
               <a
                 href={link.path}
-                className="hover:text-secondary-green/60 transition-colors duration-300"
+                className="transition-colors duration-300 hover:underline"
               >
                 {link.name}
               </a>
@@ -42,7 +42,7 @@ const Navbar = () => {
         {/* Right Section */}
         <div className="flex items-center gap-6 max-md:hidden">
           <a
-            className="hover:text-secondary-green/60 transition-colors duration-300"
+            className="transition-colors duration-300 hover:underline"
             href="#"
           >
             Log In
