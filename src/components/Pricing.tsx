@@ -96,7 +96,7 @@ const Pricing = () => {
       <div className="common-max-width mx-auto">
         <SectionHeader
           title="Pricing"
-          description="Find your perfect plan: tailored pricing for every need"
+          subtitle="Find your perfect plan: tailored pricing for every need"
         />
         {/* max-w-[calc(460*3px)] */}
         <div className="common-x-padding relative justify-center gap-y-5 self-center max-lg:grid lg:flex lg:-space-x-16">

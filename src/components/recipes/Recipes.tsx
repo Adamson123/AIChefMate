@@ -8,7 +8,7 @@ const Recipes = () => {
       <div className="common-max-width common-x-padding mx-auto">
         <SectionHeader
           title="Recipes"
-          description="Recipes crafted by AI, personalized to perfectly align with your unique dietary needs and flavor preferences."
+          subtitle="Recipes crafted by AI, personalized to perfectly align with your unique dietary needs and flavor preferences."
         />
         {/* Content */}
         <div className="grid justify-center gap-5 lg:grid-cols-2">

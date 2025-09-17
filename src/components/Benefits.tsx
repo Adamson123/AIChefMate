@@ -39,7 +39,7 @@ const Benefits = () => {
       <div className="common-max-width common-x-padding mx-auto">
         <SectionHeader
           title="Benefits"
-          description="Get meal plans tailored to your unique dietary needs, preferences, and goals, ensuring a balanced and enjoyable diet."
+          subtitle="Get meal plans tailored to your unique dietary needs, preferences, and goals, ensuring a balanced and enjoyable diet."
         />
         <div className="mx-auto mt-20 grid items-center justify-items-center gap-x-3 md:grid-cols-2 md:max-lg:max-w-[680px] lg:grid-cols-3 lg:max-xl:max-w-[1024px] xl:grid-cols-4">
           <Benefit

@@ -46,7 +46,7 @@ const Testimonials = () => {
       <div className="common-max-width common-x-padding mx-auto">
         <SectionHeader
           title="Testimonials"
-          description="Real stories from satisfied users: see how our platform changes lives"
+          subtitle="Real stories from satisfied users: see how our platform changes lives"
         />
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           <Testimonial

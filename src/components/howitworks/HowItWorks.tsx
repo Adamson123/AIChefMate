@@ -140,7 +140,7 @@ const HowItWorksElements = () => {
     <div className="common-max-width common-x-padding mx-auto max-lg:pb-9">
       <SectionHeader
         title="How it works"
-        description="Step into the world of hassle-free meal planning with our easy 3-step process"
+        subtitle="Step into the world of hassle-free meal planning with our easy 3-step process"
         //  bgClassName="bg-primary"
         titleClassName="min-[530px]:text-nowrap"
       />
@@ -173,16 +173,30 @@ const HowItWorksElements = () => {
     </div>
   );
 };
+
+/*
+ 
+Have two NotchedSection components to handle different notch positions for responsiveness.
+*/
+
 const HowItWorks = () => {
   return (
-    <section className="overflow-hidden pb-6 lg:pb-[70px]">
-      <NotchedSection notchPos="bc" className="pt-17 lg:hidden">
+    <>
+      <NotchedSection
+        sectionClassName="overflow-hidden pb-6 lg:pb-[70px]"
+        notchPos="bc"
+        className="pt-17 lg:hidden"
+      >
         <HowItWorksElements />
       </NotchedSection>
-      <NotchedSection notchPos="bl" className="pt-17 max-lg:hidden">
+      <NotchedSection
+        sectionClassName="overflow-hidden pb-6 lg:pb-[70px]"
+        notchPos="bl"
+        className="pt-17 max-lg:hidden"
+      >
         <HowItWorksElements />
       </NotchedSection>
-    </section>
+    </>
   );
 };
 

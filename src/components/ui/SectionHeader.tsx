@@ -3,12 +3,12 @@ import { cn } from "../../lib/cn";
 
 // const SectionHeader = ({
 //   title,
-//   description,
+//   subtitle,
 //   bgClassName,
 //   titleClassName,
 // }: {
 //   title: string;
-//   description: string;
+//   subtitle: string;
 //   bgClassName?: string;
 //   titleClassName?: string;
 // }) => {
@@ -38,7 +38,7 @@ import { cn } from "../../lib/cn";
 //           viewport={{ once: true }}
 //           className="leading-p -z-1"
 //         >
-//           {description}
+//           {subtitle}
 //         </motion.p>
 //       </div>
 //     </div>
@@ -47,12 +47,12 @@ import { cn } from "../../lib/cn";
 
 const SectionHeader = ({
   title,
-  description,
+  subtitle,
   // bgClassName,
   titleClassName,
 }: {
   title: string;
-  description: string;
+  subtitle: string;
   // bgClassName?: string;
   titleClassName?: string;
 }) => {
@@ -69,7 +69,7 @@ const SectionHeader = ({
           viewport={{ once: true }}
           className="leading-p -z-1"
         >
-          {description}
+          {subtitle}
         </motion.p>
       </div>
     </div>

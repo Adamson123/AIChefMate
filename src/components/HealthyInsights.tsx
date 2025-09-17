@@ -65,13 +65,13 @@ const InsightsArticleCard = ({
  *   - md: Switches to a 2‑column grid (`md:grid-cols-2`).
  *   - lg: Expands to a 3‑column grid (`lg:grid-cols-3`).
  * - Third Card (Balancing Nutrients):
- *   - Between the custom 628px breakpoint and large (`min-[628px]:max-lg`):
+ *   - Between the custom 600px breakpoint and large (`min-[558px]:max-lg`):
  *     - Becomes a horizontal flex row (`flex-row`) with image constrained to ~30% width.
  *     - Centers items vertically (`items-center`).
  *     - Spans both columns when the grid is 2 columns (`md:max-lg:col-span-2`),
  *       ensuring visual balance before the 3‑column layout kicks in at `lg`.
  * - First & Second Cards:
- *   - Between 628px and md:
+ *   - Between 600px and md:
  *     - Switch to horizontal layout with image taking ~30% width.
  *     - Centered vertical alignment (`items-center`) only on max-md.
  *
@@ -80,30 +80,34 @@ const InsightsArticleCard = ({
  */
 const HealthyInsights = () => {
   return (
-    <NotchedSection notchPos="tl" className="py-17">
+    <NotchedSection
+      sectionClassName="pb-20 lg:pb-[120px]"
+      notchPos="tl"
+      className="pt-17 pb-[90px]"
+    >
       <div className="common-max-width common-x-padding mx-auto">
         <SectionHeader
           title="Healthy Insights"
-          description="Latest News, Expert Blogs, and Nutritional Learning"
+          subtitle="Latest News, Expert Blogs, and Nutritional Learning"
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           <InsightsArticleCard
             image={vegetable}
             title="Mastering Meal Prep: Time-Saving Tips for Busy Weekdays"
-            className="max-md:items-center min-[628px]:max-md:flex-row"
-            imageClassName="min-[628px]:max-md:w-[30%]"
+            className="max-md:items-center min-[558px]:max-md:flex-row"
+            imageClassName="min-[558px]:max-md:w-[30%]"
           />
           <InsightsArticleCard
             image={food}
             title="The Power of Plant-Based: Benefits Beyond the Plate"
-            className="max-md:items-center min-[628px]:max-md:flex-row"
-            imageClassName="min-[628px]:max-md:w-[30%]"
+            className="max-md:items-center min-[558px]:max-md:flex-row"
+            imageClassName="min-[558px]:max-md:w-[30%]"
           />
           <InsightsArticleCard
             image={plant}
             title="Balancing Nutrients: A Guide to a Well-Rounded Diet"
-            className="min-[628px]:max-lg:flex-row min-[628px]:max-lg:items-center md:max-lg:col-span-2"
-            imageClassName="min-[628px]:max-lg:w-[30%]"
+            className="min-[558px]:max-lg:flex-row min-[558px]:max-lg:items-center md:max-lg:col-span-2"
+            imageClassName="min-[558px]:max-lg:w-[30%]"
           />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from "react";
 import { cn } from "../../lib/cn";
 
-export type ColorType = "dark" | "light" | "transparent";
+export type ColorType = "dark" | "light" | "transparent" | "transparent-light";
 
 const getClassesBasedOncolorType = (colorType: ColorType) => {
   switch (colorType) {
@@ -11,6 +11,8 @@ const getClassesBasedOncolorType = (colorType: ColorType) => {
       return "greenliquidAnimationButton bg-secondary-light-green text-secondary-green hover:text-white";
     case "transparent":
       return "greenliquidAnimationButton bg-secondary-light-green text-secondary-green hover:text-white border-secondary-green border-2 bg-transparent hover:text-white";
+    case "transparent-light":
+      return "lightGreenliquidAnimationButton bg-secondary-green text-white border-secondary-green border-2 bg-transparent hover:text-secondary-green";
   }
 };
 

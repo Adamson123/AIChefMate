@@ -5,12 +5,14 @@ const CurvedBackground = ({
   otherRightContent,
   leftContentImage,
   rightContentText,
+  rightContentClassName,
   scrollProgress,
 }: {
-  otherLeftContent: React.ReactNode;
-  otherRightContent: React.ReactNode;
+  otherLeftContent?: React.ReactNode;
+  otherRightContent?: React.ReactNode;
   leftContentImage: string;
-  rightContentText: string;
+  rightContentText: string[];
+  rightContentClassName?: string;
   scrollProgress: number;
 }) => {
   return (
@@ -37,29 +39,31 @@ const CurvedBackground = ({
             {otherLeftContent}
           </div>
           {/* Text */}
-          <div className="text-h2 md: text-center leading-9 md:text-right md:leading-12 xl:leading-14 [&>span]:transition-all [&>span]:duration-300">
-            {rightContentText.split("").map((char, i) => {
-              const isRaised = scrollProgress * rightContentText.length <= i;
-              console.log(char);
-
-              return (
-                <span
-                  key={i}
-                  style={{
-                    transform: isRaised ? "translateY(15px)" : "translateY(0)",
-                    display: "inline-block",
-                    transition: "transform 300ms ease",
-                  }}
-                  className={
-                    isRaised
-                      ? "text-secondary-green/20"
-                      : "text-secondary-green"
-                  }
-                >
-                  {char === " " ? <>&nbsp;</> : char}
-                </span>
-              );
-            })}
+          <div
+            className={cn(
+              "text-h2 flex flex-col text-center leading-9 md:text-right md:leading-12 xl:leading-14 [&>span]:transition-all [&>span]:duration-300",
+              rightContentClassName,
+            )}
+          >
+            <div>
+              {rightContentText.map((char, i) => {
+                const isRaised = scrollProgress * rightContentText.length <= i;
+                return (
+                  <span
+                    key={i}
+                    className={cn(
+                      isRaised
+                        ? "text-secondary-green/20 translate-y-[15px]"
+                        : "text-secondary-green translate-y-0",
+                      "inline-block transition-transform duration-300",
+                    )}
+                  >
+                    {/* {char === " " ? <>&nbsp;</> : char} */}
+                    {char}&nbsp;
+                  </span>
+                );
+              })}
+            </div>
             {otherRightContent}
           </div>
         </div>
