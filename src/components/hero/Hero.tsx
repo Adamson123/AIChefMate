@@ -2,10 +2,10 @@ import { cn } from "../../lib/cn";
 import Button from "../ui/Button";
 import FloatingIcons from "./FloatingIcons";
 import Odometer from "./Odometer";
-import markus from "/assets/hero/markus.jpg";
-import spag from "/assets/hero/spag.jpg";
-import bag from "/assets/hero/bag.jpg";
-import plant from "/assets/hero/plant.jpg";
+import markus from "/assets/hero/markus.webp";
+import spag from "/assets/hero/spag.webp";
+import bag from "/assets/hero/bag.webp";
+import plant from "/assets/hero/plant.webp";
 import type { HTMLAttributes } from "react";
 import NotchedSection from "../ui/NotchedSection";
 

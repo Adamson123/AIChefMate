@@ -1,4 +1,4 @@
-import explore from "/assets/recipes/explore.jpg";
+import explore from "/assets/recipes/explore.webp";
 import { motion } from "motion/react";
 import ArrowSvg from "../ui/ArrowSvg";
 import Button from "../ui/Button";

@@ -4,7 +4,7 @@ import SectionHeader from "./ui/SectionHeader";
 import useMotionScroll from "../hooks/useMotionScroll";
 import CurvedBackground from "./ui/CurvedBackground";
 import Button from "./ui/Button";
-import support from "/assets/need-assistance/support.png";
+import support from "/assets/need-assistance/support.webp";
 
 const NeedAssistance = () => {
   const supportText =

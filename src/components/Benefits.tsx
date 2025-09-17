@@ -1,7 +1,7 @@
 import { cn } from "../lib/cn";
 import SectionHeader from "./ui/SectionHeader";
-import bag from "/assets/hero/bag.jpg";
-import markus from "/assets/hero/markus.jpg";
+import bag from "/assets/hero/bag.webp";
+import markus from "/assets/hero/markus.webp";
 import { motion } from "motion/react";
 
 const Benefit = ({

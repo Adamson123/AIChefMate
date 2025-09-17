@@ -1,10 +1,10 @@
 import SectionHeader from "./ui/SectionHeader";
 import QuoteSvg from "./ui/QuoteSvg";
 import { motion } from "motion/react";
-import emily from "/assets/testimonials/emily.jpg";
-import mark from "/assets/testimonials/mark.jpg";
-import sarah from "/assets/testimonials/sarah.jpg";
-import rebecca from "/assets/testimonials/rebecca.jpg";
+import emily from "/assets/testimonials/emily.webp";
+import mark from "/assets/testimonials/mark.webp";
+import sarah from "/assets/testimonials/sarah.webp";
+import rebecca from "/assets/testimonials/rebecca.webp";
 
 const Testimonial = ({
   comment,

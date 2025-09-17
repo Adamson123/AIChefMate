@@ -3,9 +3,9 @@ import ArrowSvg from "./ui/ArrowSvg";
 import Button from "./ui/Button";
 import NotchedSection from "./ui/NotchedSection";
 import SectionHeader from "./ui/SectionHeader";
-import vegetable from "/assets/insights/vegetable.jpg";
-import food from "/assets/insights/food.jpg";
-import plant from "/assets/hero/plant.jpg";
+import vegetable from "/assets/insights/vegetable.webp";
+import food from "/assets/insights/food.webp";
+import plant from "/assets/hero/plant.webp";
 import { motion } from "motion/react";
 
 const InsightsArticleCard = ({

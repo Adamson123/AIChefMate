@@ -92,10 +92,10 @@ button {
 }
 
 .greenliquidAnimationButton {
-  background-image: url(/assets/wave-x-2.png);
+  background-image: url(/assets/wave-x-2.webp);
 }
 .lightGreenliquidAnimationButton {
-  background-image: url(/assets/l-wave-x-2.png);
+  background-image: url(/assets/l-wave-x-2.webp);
 }
 
 .lightGreenliquidAnimationButton:hover {
@@ -143,7 +143,7 @@ body {
 } */
 /* .liquidAnimationButton {
   
-  background-image: url(/assets/green-wave.png);
+  background-image: url(/assets/green-wave.webp);
   background-repeat: repeat-y; 
   background-position: -100% 0; 
   transition: 1.5s ease; 

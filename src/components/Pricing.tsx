@@ -101,9 +101,9 @@ const Pricing = () => {
         {/* max-w-[calc(460*3px)] */}
         <div className="common-x-padding relative justify-center gap-y-5 self-center max-lg:grid lg:flex lg:-space-x-16">
           {/* Left Image */}
-          <div className="absolute top-1/2 -left-[2%] -z-1 h-[90%] w-md -translate-y-1/2 rounded-l-[33px] bg-[url(/assets/pricing/artichokes.jpg)] bg-cover bg-[-90px_0%] max-lg:hidden" />
+          <div className="absolute top-1/2 -left-[2%] -z-1 h-[90%] w-md -translate-y-1/2 rounded-l-[33px] bg-[url(/assets/pricing/artichokes.webp)] bg-cover bg-[-90px_0%] max-lg:hidden" />
           {/* Right Image */}
-          <div className="absolute top-1/2 right-[2%] -z-1 h-[90%] w-md -translate-y-1/2 rounded-r-[33px] bg-[url(/assets/pricing/artichokes.jpg)] bg-cover bg-[90px_0%] max-lg:hidden" />
+          <div className="absolute top-1/2 right-[2%] -z-1 h-[90%] w-md -translate-y-1/2 rounded-r-[33px] bg-[url(/assets/pricing/artichokes.webp)] bg-cover bg-[90px_0%] max-lg:hidden" />
           <Plan
             name="Free Plan"
             price={0}

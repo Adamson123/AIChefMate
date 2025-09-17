@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import ArrowSvg from "../ui/ArrowSvg";
 import Button from "../ui/Button";
-import first from "/assets/recipes/first.png";
+import first from "/assets/recipes/first.webp";
+import second from "/assets/recipes/second.webp";
+import third from "/assets/recipes/third.webp";
 import {
   motion,
   useMotionValue,
@@ -14,8 +16,10 @@ const maxPercentage = 65;
 const BouncingImageRectangle = ({
   text,
   className,
+  image,
 }: {
   text: string;
+  image: string;
   className?: string;
 }) => {
   return (
@@ -31,7 +35,7 @@ const BouncingImageRectangle = ({
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         className="aspect-square w-[45%] object-cover"
-        src={first}
+        src={image}
         alt="Recipe 1"
       />
       {/* Text */}
@@ -70,6 +74,7 @@ const RollingImageRectangle = ({
   imageClassName,
   textContainerClassName,
   positionToTrack = "left",
+  image,
 }: {
   text: string;
   className?: string;
@@ -78,6 +83,7 @@ const RollingImageRectangle = ({
   imageInitial?: boolean | TargetAndTransition | VariantLabels | undefined;
   imageWhileInView?: TargetAndTransition | VariantLabels | undefined;
   positionToTrack?: string;
+  image: string;
 }) => {
   const position = useMotionValue(0);
   const [opacity, setOpacity] = useState(0);
@@ -129,7 +135,7 @@ const RollingImageRectangle = ({
           "absolute right-0 aspect-square w-[35%] object-cover",
           imageClassName,
         )}
-        src={first}
+        src={image}
         alt="Recipe 1"
       />
 
@@ -157,10 +163,11 @@ const RecipeLeftContent = () => {
   return (
     <div className="flex max-w-[750px] flex-col items-start gap-5">
       {/* First */}
-      <RollingImageRectangle text={firstText} />
-      <BouncingImageRectangle text={firstText} />
+      <RollingImageRectangle image={first} text={firstText} />
+      <BouncingImageRectangle image={first} text={firstText} />
       {/* Second */}
       <RollingImageRectangle
+        image={second}
         text={secondText}
         positionToTrack="right"
         imageInitial={{ right: "0%", rotate: "-180deg" }}
@@ -169,15 +176,18 @@ const RecipeLeftContent = () => {
         className="bg-secondary-light-green flex-row-reverse rounded-full border-none"
       />
       <BouncingImageRectangle
+        image={second}
         className="bg-secondary-light-green border-none"
         text={secondText}
       />
       {/* Third */}
       <RollingImageRectangle
+        image={third}
         text={thirdText}
         className="bg-primary border-none"
       />
       <BouncingImageRectangle
+        image={third}
         className="bg-primary border-none"
         text={thirdText}
       />

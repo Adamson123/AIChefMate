@@ -2,7 +2,7 @@ import { useRef } from "react";
 import useMotionScroll from "../hooks/useMotionScroll";
 import { cn } from "../lib/cn";
 import SectionHeader from "./ui/SectionHeader";
-import leaf from "/assets/demo/leaf.jpg";
+import leaf from "/assets/demo/leaf.webp";
 import play from "/assets/demo/play.svg";
 import CurvedBackground from "./ui/CurvedBackground";
 
