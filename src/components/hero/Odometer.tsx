@@ -2,6 +2,14 @@ import { useInView } from "motion/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { cn } from "../../lib/cn";
 
+const debounce = (func: Function, wait: number = 200) => {
+  let timeout: number;
+  return (...args: any[]) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), wait);
+  };
+};
+
 const NumCols = ({
   rowIndex,
   colIndex,
@@ -34,9 +42,10 @@ const NumCols = ({
 
     updateColPosition();
 
-    window.addEventListener("resize", updateColPosition);
+    window.addEventListener("resize", debounce(updateColPosition));
 
-    return () => window.removeEventListener("resize", updateColPosition);
+    return () =>
+      window.removeEventListener("resize", debounce(updateColPosition));
   }, [colIndex, rowIndex, count]);
 
   return (
