@@ -182,15 +182,17 @@ Have two NotchedSection components to handle different notch positions for respo
 const HowItWorks = () => {
   return (
     <>
+      {/* Small devices */}
       <NotchedSection
-        sectionClassName="overflow-hidden pb-6 lg:pb-[70px]"
+        sectionClassName="pb-20"
         notchPos="bc"
         className="pt-17 lg:hidden"
       >
         <HowItWorksElements />
       </NotchedSection>
+      {/* Big Devices  */}
       <NotchedSection
-        sectionClassName="overflow-hidden pb-6 lg:pb-[70px]"
+        sectionClassName="!pb-[120px]"
         notchPos="bl"
         className="pt-17 max-lg:hidden"
       >

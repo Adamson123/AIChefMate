@@ -26,7 +26,7 @@ const Navbar = () => {
             <li key={link.name}>
               <a
                 href={link.path}
-                className="hover:text-secondary-light-green transition-colors duration-300"
+                className="hover:text-secondary-green/60 transition-colors duration-300"
               >
                 {link.name}
               </a>
@@ -36,7 +36,7 @@ const Navbar = () => {
         {/* Right Section */}
         <div className="flex items-center gap-6 max-md:hidden">
           <a
-            className="hover:text-secondary-light-green transition-colors duration-300"
+            className="hover:text-secondary-green/60 transition-colors duration-300"
             href="#"
           >
             Log In
