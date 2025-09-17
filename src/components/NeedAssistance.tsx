@@ -19,7 +19,7 @@ const NeedAssistance = () => {
   });
 
   return (
-    <section ref={containerRef} className={cn("relative h-[300vh]")}>
+    <section ref={containerRef} className={cn("relative h-[200vh]")}>
       <div className="sticky top-0 bg-white pt-12 pb-25">
         <SectionHeader
           title="Need Assistance?"
