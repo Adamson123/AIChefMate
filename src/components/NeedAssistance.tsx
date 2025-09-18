@@ -26,7 +26,7 @@ const NeedAssistance = () => {
           subtitle="We’re here to help!"
         />
 
-        <div className="common-l-padding flex justify-end">
+        <div className="md:common-l-padding flex justify-end">
           {/* Curve Bg */}
           <CurvedBackground
             leftContentImage={support}

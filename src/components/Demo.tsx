@@ -32,7 +32,7 @@ const Demo = () => {
           subtitle="See how it works: your personalized meal planning journey"
         />
 
-        <div className="common-l-padding flex justify-end">
+        <div className="md:common-l-padding flex justify-end">
           {/* Curve Bg */}
           <CurvedBackground
             leftContentImage={leaf}
