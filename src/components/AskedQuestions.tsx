@@ -57,7 +57,7 @@ const QuestionAndAnswer = ({
 
 const AskedQuestions = () => {
   return (
-    <section className="overflow-x-clip pb-[170px] max-md:pb-24">
+    <section className="overflow-x-clip pb-[110px] max-md:pb-24">
       <div className="common-max-width common-x-padding mx-auto">
         <SectionHeader
           title="Frequently Asked Questions"
