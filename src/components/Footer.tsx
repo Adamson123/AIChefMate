@@ -39,7 +39,7 @@ const Footer = () => {
             </ul>
           </div>
           {/* Right */}
-          <div className="flex gap-x-25 gap-y-10 max-xl:flex-col">
+          <div className="flex gap-x-25 gap-y-5 max-xl:flex-col">
             <p className="text-secondary-light-green leading-p max-w-[500px]">
               Join us on our journey to make meal planning simple and joyful.
               Connect with us on social media, explore our FAQs for quick
