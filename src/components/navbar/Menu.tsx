@@ -62,7 +62,7 @@ const Menu = ({
             >
               <a href="#" className="flex items-center gap-2">
                 {link.name}
-                <ArrowSvg className="[&_path]:fill-secondary-light-green h-5 w-5 -rotate-45" />
+                <ArrowSvg className="[&_path]:fill-secondary-green h-4 w-4 -rotate-45" />
                 {/* 
                   <ArrowSvg className="[&_path]:fill-secondary-green [&_path]:stroke-secondary-light-green h-5 w-5 -rotate-45 [&_path]:stroke-2" /> */}
               </a>
@@ -71,7 +71,9 @@ const Menu = ({
         </ul>
         {/* Bottom */}
         <div className="mt-7 px-5">
-          <Button className="w-full">Start For Free</Button>
+          <Button colorType="light" className="w-full">
+            Start For Free
+          </Button>
         </div>
 
         <Attribution
