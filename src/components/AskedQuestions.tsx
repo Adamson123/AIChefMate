@@ -22,7 +22,7 @@ const QuestionAndAnswer = ({
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       className={cn(
-        "flex items-start gap-5 rounded-2xl px-9 transition-all duration-500 max-lg:max-w-[600px] max-md:px-5",
+        "flex items-start gap-5 rounded-2xl px-9 transition-all duration-50 max-lg:max-w-[600px] max-md:px-5",
         isOpen && "bg-primary py-9 max-md:py-5",
       )}
     >
