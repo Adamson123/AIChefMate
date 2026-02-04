@@ -3,7 +3,7 @@ import {
   useScroll,
   type UseScrollOptions,
 } from "motion/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const useMotionScroll = ({
   container,
@@ -17,10 +17,26 @@ const useMotionScroll = ({
   });
 
   const [scrollProgress, setScrollProgress] = useState(0);
+  const frameRef = useRef<number | null>(null);
+  const latestRef = useRef(0);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    setScrollProgress(latest);
+    latestRef.current = latest;
+    if (frameRef.current === null) {
+      frameRef.current = requestAnimationFrame(() => {
+        setScrollProgress(latestRef.current);
+        frameRef.current = null;
+      });
+    }
   });
+
+  useEffect(() => {
+    return () => {
+      if (frameRef.current !== null) {
+        cancelAnimationFrame(frameRef.current);
+      }
+    };
+  }, []);
 
   return { scrollProgress };
 };
